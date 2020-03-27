@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const router = new Router();
 
+// create new user with the following post request
 router.post("/user", async (req, res, next) => {
   try {
     const newUser = await User.create({
@@ -17,7 +18,7 @@ router.post("/user", async (req, res, next) => {
     next(err);
   }
 });
-
+// retrieve all users with the following get request
 router.get("/user", async (req, res, next) => {
   try {
     const users = await User.findAll();

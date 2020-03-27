@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
+const Friend = require("../friends/model");
 
 const User = db.define("user", {
   name: {
@@ -15,5 +16,8 @@ const User = db.define("user", {
     allowNull: false
   }
 });
+
+Friend.belongsTo(User);
+User.hasMany(Friend);
 
 module.exports = User;
