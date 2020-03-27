@@ -1,10 +1,18 @@
 const express = require("express");
-const db = require("./db");
-const User = require("./user/model");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+
+const userRouter = require("./user/router");
 
 const app = express();
+const corsMiddleware = cors();
+const jsonParser = bodyParser.json();
 
 const port = process.env.PORT || 4000;
+
+app.use(corsMiddleware);
+app.use(jsonParser);
+app.use(userRouter);
 
 app.listen(
   port,
