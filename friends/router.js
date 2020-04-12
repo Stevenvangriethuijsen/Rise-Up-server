@@ -3,7 +3,7 @@ const Friend = require("./model");
 
 const router = new Router();
 
-// create a new  with the following post request
+// create a new friendship connection with the following post request
 router.post("/friend", async (req, res, next) => {
   try {
     const addFriend = await Friend.create(req.body);
