@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const Userprofile = db.define("userProfile", {
+const Userlocation = db.define("userLocation", {
   longitude: {
     type: Sequelize.FLOAT,
     allowNull: false,
@@ -12,4 +12,4 @@ const Userprofile = db.define("userProfile", {
   },
 });
 
-module.exports = Userprofile;
+module.exports = Userlocation;
