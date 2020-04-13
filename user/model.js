@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 const Friend = require("../friends/model");
-const Userprofile = require("../userProfile/model");
+const Userlocation = require("../userLocation/model");
 
 const User = db.define("user", {
   name: {
@@ -21,7 +21,7 @@ const User = db.define("user", {
 Friend.belongsTo(User);
 User.hasMany(Friend);
 
-Userprofile.belongsTo(User);
-User.hasOne(Userprofile);
+Userlocation.belongsTo(User);
+User.hasOne(Userlocation);
 
 module.exports = User;

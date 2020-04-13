@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const authenticationRouter = require("./authentication/router");
 const userRouter = require("./user/router");
 const friendsRouter = require("./friends/router");
-const userProfileRouter = require("./userProfile/router");
+const userLocationRouter = require("./userLocation/router");
 
 const app = express();
 const corsMiddleware = cors();
@@ -19,7 +19,7 @@ app.use(jsonParser);
 app.use(authenticationRouter);
 app.use(userRouter);
 app.use(friendsRouter);
-app.use(userProfileRouter);
+app.use(userLocationRouter);
 
 app.listen(
   port,
