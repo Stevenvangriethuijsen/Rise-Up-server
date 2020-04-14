@@ -1,10 +1,11 @@
 const { Router } = require("express");
 const Userlocation = require("./model");
+const auth = require("../authentication/middleware");
 
 const router = new Router();
 
 // create new profile with the following post request
-router.post("/user/location", async (req, res, next) => {
+router.post("/user/location", auth, async (req, res, next) => {
   try {
     const newUser = await Userlocation.create(req.body);
 
@@ -36,7 +37,7 @@ router.get("/user/location/:id", async (req, res, next) => {
   }
 });
 
-router.put("/user/location/:id", async (req, res, next) => {
+router.put("/user/location/:id", auth, async (req, res, next) => {
   try {
     const { id } = req.params;
 
