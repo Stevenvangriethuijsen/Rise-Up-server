@@ -24,7 +24,7 @@ router.get("/user", async (req, res, next) => {
   try {
     const users = await User.findAll({ include: Userlocation });
     const usersIdNameAndLocation = users.map((user) => {
-      return { userId: user.id, name: user.name, location: user.userLocation };
+      return { userId: user.id, name: user.name };
     });
     res.send(usersIdNameAndLocation);
   } catch (error) {
