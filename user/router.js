@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const User = require("./model");
 const bcrypt = require("bcrypt");
+const Userlocation = require("../userLocation/model");
 
 const router = new Router();
 
@@ -10,7 +11,7 @@ router.post("/user", async (req, res, next) => {
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 10)
+      password: bcrypt.hashSync(req.body.password, 10),
     });
 
     res.status(201).json(newUser);
@@ -21,9 +22,11 @@ router.post("/user", async (req, res, next) => {
 // retrieve all users with the following get request
 router.get("/user", async (req, res, next) => {
   try {
-    const users = await User.findAll();
-
-    res.send(users);
+    const users = await User.findAll({ include: Userlocation });
+    const usersIdNameAndLocation = users.map((user) => {
+      return { userId: user.id, name: user.name };
+    });
+    res.send(usersIdNameAndLocation);
   } catch (error) {
     next(error);
   }
